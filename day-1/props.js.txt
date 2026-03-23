@@ -1,0 +1,13 @@
+let App=(props)=>{
+ console.log(props);
+   return(
+     <>
+   
+       <h1>this is demo os an arrow function</h1>
+      <p>evrything is under processing </p>
+        
+         <button onClick={() => alert("Button clicked!")}>click</button>
+        
+     
+       {props.children}
+       </>
