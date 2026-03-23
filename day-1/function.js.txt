@@ -1,0 +1,35 @@
+import React from "react";
+
+ import { useState } from "react";
+
+ function User({ id, name, age, place }) {
+   return (
+     <div >
+       <h3>ID: {id}</h3>
+       <h3>Name: {name}</h3>
+       <p>Age: {age}</p>
+       <p>Place: {place}</p>
+     </div>
+   );
+ }
+
+ function App() {
+   const users = [
+     { id: 1, name: "raghav", age: 30, place: "kolar" },
+     { id: 2, name: "eshwar", age: 20, place: "kolar" },
+   ];
+
+  return (
+     <div>
+       {users.map((u) => (
+         <User
+           key={u.id}
+           id={u.id}
+           name={u.name}
+           age={u.age}
+           place={u.place}
+         />
+       ))}
+     </div>
+  );
+ }
