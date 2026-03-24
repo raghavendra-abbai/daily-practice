@@ -1,0 +1,30 @@
+function App(){
+  let product ="hp laptop";
+  let price = 45000;
+
+  let [productname, updatename] = useState("hp laptop");
+  let [inputValue, setInputValue] = useState("");
+
+  return(
+    <>
+      <h1>product:{productname}</h1>
+      <p>price:{price}</p>
+
+      <input 
+        id="proname"
+        value={inputValue}
+        onChange={(e)=>{
+          setInputValue(e.target.value);
+        }}
+      />
+
+      <button onClick={()=>{
+          updatename(inputValue);
+      }}>
+        update
+      </button>
+    </>
+  )
+}
+
+export default App;
