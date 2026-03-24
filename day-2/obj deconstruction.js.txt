@@ -1,0 +1,35 @@
+
+import React, { useState } from "react";
+
+function App(){
+  let product ="hp laptop";
+  let price = 45000;
+
+  const [inputValue, setInputValue] = useState({
+    price:80000,
+    pname:"Redmi"
+  });
+
+  return(
+    <>
+      <h1>product:{inputValue.pname}</h1>
+      <p>price:{inputValue.price}</p>
+
+      <input id="pname"/>
+
+      <button onClick={()=>{
+        let mprice = document.getElementById("pname").value;
+
+        setInputValue({
+          ...inputValue,
+          pname: mprice,
+          price: 80000
+        });
+      }}>
+        update
+      </button>
+    </>
+  )
+}
+
+export default App;
