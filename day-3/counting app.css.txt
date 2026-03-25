@@ -1,0 +1,27 @@
+ *{
+    margin: 0;
+    padding: 0;
+ }
+
+ .wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 10px;
+    
+ }
+ button{
+    size: 10px;
+    border: none;
+outline: none;
+
+  padding: 15px 30px;  
+  font-size: 18px;     
+}
+button.minus{
+   background-color: red;
+}
+button.plus{
+   background-color: green;
+}
