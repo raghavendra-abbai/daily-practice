@@ -7,3 +7,4 @@ Improve problem-solving skills
 Strengthen core programming concepts
 Maintain consistency in coding
 Track daily progress using Git
+exploring new things
