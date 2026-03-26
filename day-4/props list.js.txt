@@ -1,3 +1,6 @@
+#properties for app.js
+
+
 function Products({ id, name, aprice, offprice }) {
     return (
         <>
