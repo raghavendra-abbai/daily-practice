@@ -1,0 +1,18 @@
+import Product from "./products";
+
+function App(){
+  let products = {
+    id:1,
+    name:"tomato",
+    aprice:50,
+    offprice:40
+  };
+
+  return(
+    <>
+      <Product {...products} />
+    </>
+  )
+}
+
+export default App;
