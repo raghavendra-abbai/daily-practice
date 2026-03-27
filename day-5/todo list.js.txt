@@ -1,12 +1,80 @@
+import { useState } from "react";
+import "./app.css"
 
 function App(){
+    let [inputValue, setInputValue] = useState("");
+    let [todos,setTodos] = useState([
+        {id:1, text:"reactlearn"},
+        {id:2, text:"learnangular react"},  
+        {id:3, text:"todo app"}
+    ]);
+
+    function addnewtodo() {
+       if (inputValue === "") {
+        alert("please enter a task");
+       }
+       else{
+        let newtodo = {
+            id: todos.length + 1,
+            text: inputValue
+       }
+       setTodos([...todos, newtodo]);
+       setInputValue(""); 
+       }
+    }
+
+    function deletetodo(id){
+        let updatedtodos = todos.filter((todo) => todo.id !== id);
+        setTodos(updatedtodos);
+    }
+
     return(
+        <>
+        <h1 className="text-center">Todo App Using React</h1>
+
         <div className="container mt-5 w-50">
-        <div className="input-group ">
-            <input className="form-control" type="text"  />
-            <button className="btn btn-primary">Add</button>
+            <div className="input-group">
+
+                <input 
+                    className="form-control" 
+                    value={inputValue}
+                    onChange={(e)=>{ 
+                        let task = e.target.value;
+                        setInputValue(task);
+                    }}
+                    type="text"  
+                />
+
+                <button 
+                    onClick={()=>{
+                        addnewtodo();
+                    }} 
+                    className="btn btn-primary"
+                >
+                    Add
+                </button>
+
+            </div>
+
+           <ul className="list-group mt-3">
+            {
+                todos.map((todo) => (
+                    <li key={todo.id} className="list-group-item">
+                        <p>{todo.text}</p>
+                        <button 
+                            onClick={() => deletetodo(todo.id)} 
+                            className="btn"
+                        >
+                            ❌
+                        </button>
+                    </li>
+                ))
+            }
+           </ul>
+
         </div>
-        </div>
+        </>
     )
 }
+
 export default App;
