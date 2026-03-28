@@ -1,0 +1,23 @@
+import { useState } from "react";
+
+function App(){
+    let [num,updatenum]=useState(100)
+    return(
+        <>
+
+        <h1>{num}</h1>
+         <button onClick={()=>{
+            updatenum(200)
+         }}>click</button>
+         <br></br>
+
+         <input onChange={(e)=>{
+            let update=e.target.value;
+            updatenum(update)
+         }} type="text"/> 
+
+         </>
+        
+    )
+}
+export default App;
