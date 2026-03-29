@@ -1,0 +1,29 @@
+import "./app.css";
+
+function App(){
+      let login=true;
+
+
+    return(
+        <Header />
+    )
+  
+
+   
+        function Header(){
+            return(
+                 <ul>
+            <li>home</li>
+             <li>about</li>
+              <li>contact us</li>
+            <button>
+                {login ? "logout" : "login"}
+            </button>
+        </ul>
+            )
+            
+        }
+       
+    
+}
+export default App;
