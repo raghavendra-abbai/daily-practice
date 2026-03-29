@@ -1,0 +1,22 @@
+import { useEffect, useState } from "react";
+
+function Testusestate(){
+    const [count, setCount] = useState(0);
+    const [counter, setCounter] = useState(0);
+
+    useEffect(()=>{
+        console.log("useeffect called");
+    }, [counter]);
+
+    return(
+        <>
+        {console.log("rendering")}
+        <div>usestate example</div>
+        <p>Count: {count}</p>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+        <button onClick={() => setCounter(counter + 1)}>Increment Counter</button>
+        </>
+    )
+}
+
+export default Testusestate;
