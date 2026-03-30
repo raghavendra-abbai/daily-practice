@@ -1,0 +1,13 @@
+function Products({ title, price, image }) {
+    return(
+        <>
+            <div className="card">
+                <img src={image} />
+                <h2>{title}</h2>
+                <h3>{price}</h3>
+            </div>
+        </>
+    )
+}
+
+export default Products;
