@@ -1,3 +1,5 @@
+//# products js file
+
 function Products({ title, price, image }) {
     return(
         <>
