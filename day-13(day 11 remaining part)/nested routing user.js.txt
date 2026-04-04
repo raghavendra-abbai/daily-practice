@@ -1,0 +1,23 @@
+import { useLocation, useParams } from "react-router-dom";
+
+function User() {
+  const { id, name } = useParams();
+  const location = useLocation();
+
+  
+  const query = new URLSearchParams(location.search);
+  const age = query.get("age");
+  const city = query.get("city");
+
+  return (
+    <div>
+      <h1>User Component</h1>
+      <p>User ID: {id}</p>
+      <p>User Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>City: {city}</p>
+    </div>
+  );
+}
+
+export default User;
