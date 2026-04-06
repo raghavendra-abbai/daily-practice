@@ -1,0 +1,39 @@
+
+import { use, useRef } from "react";
+import "./app.css";
+import { useState } from "react";
+
+function App() {
+
+  const res = useRef(null);
+
+  let x = useRef(10);
+   let[number,updatenumber]=useState(0);
+
+  return (
+    <>
+      <h1 ref={res} className="head">learning useRef</h1>
+
+      <button onClick={() => {
+
+        res.current.classList.toggle("head1");
+        res.current.classList.toggle("head");
+
+        console.log(res.current);
+      }}>
+        click
+      </button>
+
+      <p>x value: {x.current}</p>
+     <button onClick={() => {
+        x.current = x.current + 1;
+          updatenumber(number + 1);
+        console.log(x.current);
+      }}>
+        increment x
+      </button>
+    </>
+  );
+}
+
+export default App;
