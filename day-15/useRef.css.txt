@@ -1,0 +1,9 @@
+.head{
+    background-color: blue;
+    color: white;
+
+}
+.head1{
+    background-color: red;
+    color: white;
+}
