@@ -1,0 +1,43 @@
+import { useRef } from "react";
+import "./app.css";
+
+let App = () => {
+  let res = useRef([]);
+
+  function handleClick(index) {
+    let element = res.current[index];
+
+    element.classList.toggle("head1");
+  
+  }
+
+  return (
+    <>
+      <h1
+        ref={(el) => (res.current[0] = el)}
+        onClick={() => handleClick(0)}
+        className="head"
+      >
+        useref part 2
+      </h1>
+
+      <h1
+        ref={(el) => (res.current[1] = el)}
+        onClick={() => handleClick(1)}
+        className="head"
+      >
+        new topic
+      </h1>
+
+      <h1
+        ref={(el) => (res.current[2] = el)}
+        onClick={() => handleClick(2)}
+        className="head"
+      >
+        learning useref part 2
+      </h1>
+    </>
+  );
+};
+
+export default App;
