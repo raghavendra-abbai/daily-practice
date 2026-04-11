@@ -1,10 +1,10 @@
-function Products(){
-    return(
-        <>
-        <div>
-            <h1>Products Page</h1>
-        </div>
-        </>
-    )
+function Products({ data }) {
+  return (
+    <div>
+      <h1>Products Page</h1>
+      <h2>isadmin: {data ? "True" : "False"}</h2>
+    </div>
+  );
 }
+
 export default Products;
