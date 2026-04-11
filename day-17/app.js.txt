@@ -1,0 +1,17 @@
+import Home from "./home";
+
+
+
+function App(){
+
+  let isname=false;
+
+  return(
+    <>
+    <h1>Welcome to my app</h1>
+
+    <Home data={isname}></Home>
+    </>
+  )
+}
+export default App;

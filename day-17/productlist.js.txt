@@ -1,0 +1,15 @@
+import Products from "./products";
+function Productlist({ data }) {
+    return(
+        <>
+        <div>
+            <h1>Productlist Page</h1>
+          <h2>Admin:{data ? "True" : "False"}</h2>
+            
+            <Products></Products>
+        </div>
+      
+        </>
+    )
+}
+export default Productlist;

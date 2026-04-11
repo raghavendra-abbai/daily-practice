@@ -1,0 +1,15 @@
+import Productlist from "./productlist";
+
+function Home({ data }) { 
+    return (
+        <div>
+            <h1>Home Page</h1>
+
+            
+
+            <Productlist data={data} />
+        </div>
+    );
+}
+
+export default Home;
