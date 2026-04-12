@@ -1,0 +1,22 @@
+import { Context } from "./app";    
+import { useContext } from "react";
+import Products from "./products";   
+
+function Productlist() {
+
+  const phone = useContext(Context);  
+
+  return (
+    <div>
+      <h1>Productlist Page</h1>
+
+      <h2>Price: {phone.price}</h2>
+      <h2>Name: {phone.name}</h2>
+  
+
+      <Products />
+    </div>
+  );
+}
+
+export default Productlist;
