@@ -1,0 +1,26 @@
+import Home from "./home";
+import { createContext } from "react";
+
+export let Context = createContext();
+
+function App() {
+
+  let phone = {
+    name: "iphone",
+    price: 80000,
+    owner: "raghav"
+  };
+
+  return (
+    <>
+      <h1>my app</h1>
+
+      <Context.Provider value={phone}>
+        <Home />
+      </Context.Provider>
+
+    </>
+  );
+}
+
+export default App;
