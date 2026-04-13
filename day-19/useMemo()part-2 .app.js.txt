@@ -1,0 +1,64 @@
+import { useEffect, useState, useMemo } from "react";
+import "./app.css";
+
+function App() {
+  let [time, setTime] = useState(new Date().toLocaleTimeString());
+
+  let [products, setProducts] = useState([
+    { id: 1, name: "laptop", price: 80000 },
+    { id: 2, name: "mobile", price: 50000 },
+    { id: 3, name: "tablet", price: 30000 }
+  ]);
+
+  let [search, updatesearch] = useState("");
+
+  let filteredProducts = useMemo(() => {
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [products, search]);
+
+  useEffect(() => {
+    let timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  return (
+    <>
+      <h1>Current Time: {time}</h1>
+
+      <input
+        type="text"
+        value={search}
+        placeholder="search products"
+        onChange={(e) => updatesearch(e.target.value)}
+      />
+
+      <table border="2px">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>price</td>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product) => (
+            <tr key={product.id}>
+              <td>{product.id}</td>
+              <td>{product.name}</td>
+              <td>{product.price}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+export default App;
