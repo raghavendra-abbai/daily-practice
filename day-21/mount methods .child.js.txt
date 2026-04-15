@@ -1,0 +1,31 @@
+import React, { Component } from "react";
+
+class Child extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0
+    }; 
+  }
+
+  static getDerivedStateFromProps(props, state){
+    return {
+      count: props.data + 9  
+    };
+  }
+
+
+
+  render() {
+    return (
+      <>
+        <h1>child component</h1>
+        <h2>props: {this.props.data}</h2>
+        <h2>count: {this.state.count}</h2>
+      </>
+    );
+  }
+}
+
+export default Child;
