@@ -1,0 +1,26 @@
+import React, { Component } from "react";
+import Child from "./child";
+
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = { data: 1 };  
+  }
+
+  render() {
+    return (
+      <>
+        <h1>parent component</h1>
+
+        <Child data={this.state.data} />
+
+        <button onClick={() => this.setState({ data: this.state.data + 1 })}>
+          click
+        </button>
+      </>
+    );
+  }
+}
+
+export default App;
