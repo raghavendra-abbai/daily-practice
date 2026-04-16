@@ -1,0 +1,59 @@
+import React, { Component } from "react";
+
+class Child extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      count: 0,
+      product: "loading"
+    }; 
+  }
+
+  static getDerivedStateFromProps(props, state){
+    return {
+      count: props.data + 9  
+    };
+  }
+
+  componentDidMount(){
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+
+       
+        this.setState({
+          product: data[0].title
+        });
+      });
+  }
+     
+  shouldComponentUpdate(){
+    return true;
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log("getSnapshotBeforeUpdate");
+    return null;
+  }
+  componentDidUpdate(){
+    console.log("componentDidUpdate");
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount");
+  }
+
+  render() {
+    return (
+      <>
+        <h1>child component</h1>
+        <h2>props: {this.props.data}</h2>
+        <h2>count: {this.state.count}</h2>
+        <h2>product: {this.state.product}</h2>
+      </>
+    );
+  }
+}
+
+export default Child;
