@@ -1,4 +1,4 @@
-
+# api calling using fetch method
 import { useEffect, useState } from "react";
 
 function App() {
