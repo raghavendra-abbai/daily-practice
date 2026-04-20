@@ -1,0 +1,111 @@
+import { useState } from "react";
+
+function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({});
+  const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const validate = () => {
+    let newErrors = {};
+
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!trimmedEmail) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(trimmedEmail)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+   
+    if (!trimmedPassword) {
+      newErrors.password = "Password is required";
+    } else if (trimmedPassword.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    } else if (!/[A-Z]/.test(trimmedPassword)) {
+      newErrors.password = "Must include at least one uppercase letter";
+    } else if (!/[0-9]/.test(trimmedPassword)) {
+      newErrors.password = "Must include at least one number";
+    }
+
+    return newErrors;
+  };
+
+  const handleLogin = () => {
+    setSuccess("");
+    const validationErrors = validate();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setError(validationErrors);
+      return;
+    }
+
+    setError({});
+    setSuccess("Login successful!");
+
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
+
+  return (
+    <div className="border w-25 mt-5 m-auto p-4 shadow rounded">
+      <h1 className="text-primary text-center">Login Form</h1>
+
+      {success && <p className="text-success text-center">{success}</p>}
+
+      <div className="mt-3">
+        <label>E-mail</label>
+        <input
+          type="email"
+          className="form-control"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {error.email && (
+          <p className="text-danger">{error.email}</p>
+        )}
+      </div>
+
+  
+      <div className="mt-3">
+        <label>Password</label>
+        <div className="d-flex">
+          <input
+            type={showPassword ? "text" : "password"}
+            className="form-control"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            type="button"
+            className="btn btn-outline-secondary ms-2"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        </div>
+        {error.password && (
+          <p className="text-danger">{error.password}</p>
+        )}
+      </div>
+
+      
+      <div className="mt-3">
+        <button
+          className="btn btn-primary w-100"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
