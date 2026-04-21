@@ -1,0 +1,51 @@
+import { useState } from "react";
+
+function Forms() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Name:", name);
+    console.log("Email:", email);
+
+    alert("Form submitted!");
+  };
+
+  return (
+    <div className="container mt-5">
+      <h2 className="text-center">Simple Form</h2>
+
+      <form onSubmit={handleSubmit} className="w-50 m-auto border p-4">
+
+        <div className="mb-3">
+          <label>Name</label>
+          <input
+            type="text"
+            className="form-control"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+
+        <div className="mb-3">
+          <label>Email</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary w-100">
+          Submit
+        </button>
+
+      </form>
+    </div>
+  );
+}
+
+export default Forms;
