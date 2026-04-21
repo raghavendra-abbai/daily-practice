@@ -1,0 +1,35 @@
+
+import { lazy, Suspense, useState } from "react";
+
+const Forms = lazy(() => import("./form"));
+
+function App() {
+
+  const [show, setshow] = useState(false);
+
+  return (
+    <>
+      <div className='text-center'>
+        <h1>Lazy Loading</h1>
+
+        <button
+          className="btn btn-primary"
+          onClick={() => setshow(true)}
+        >
+          open
+        </button>
+
+        {
+          show && (
+            <Suspense>
+              <Forms />
+            </Suspense>
+          )
+        }
+
+      </div>
+    </>
+  );
+}
+
+export default App;
