@@ -1,0 +1,46 @@
+import { Route, Routes, Link } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import "./app.css";
+
+const Home = lazy(() => import("./home"));
+const Search = lazy(() => import("./search"));
+const User = lazy(() => import("./user"));
+const About = lazy(() => import("./about"));
+const Contactus = lazy(() => import("./contactus"));
+
+function Header() {
+  return (
+    <nav className="navbar">
+      <h2 className="logo">MyApp</h2>
+      <ul className="nav-links">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/search">Search</Link></li>
+        <li><Link to="/user">User</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contactus">Contact</Link></li>
+      </ul>
+    </nav>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header />
+
+      <div className="container">
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/user" element={<User />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contactus" element={<Contactus />} />
+          </Routes>
+        </Suspense>
+      </div>
+    </>
+  );
+}
+
+export default App;

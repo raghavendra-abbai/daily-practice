@@ -1,0 +1,11 @@
+function User(){
+    return(
+        <>
+       <div>
+        <h1>this is user section</h1>
+        </div> 
+        </>
+    )
+}
+
+export default User;
