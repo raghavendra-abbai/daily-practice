@@ -1,0 +1,40 @@
+
+import React from "react";
+
+
+function Authentest(Component) {
+  let authentication = true;
+
+  return function WrappedComponent(props) {
+    if (authentication) {
+      return <Component {...props} />;
+    } else {
+      return <Login />;
+    }
+  };
+}
+
+function User(props) {
+  return (
+    <>
+      <h1>This is user component</h1>
+      <h2>{props.username}</h2>
+    </>
+  );
+}
+
+function Login() {
+  return <div>This is login component</div>;
+}
+
+const AuthUser = Authentest(User);
+
+function App() {
+  return (
+    <>
+      <AuthUser username="Raghav" />
+    </>
+  );
+}
+
+export default App;
