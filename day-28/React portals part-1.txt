@@ -1,0 +1,24 @@
+
+import react from "react";
+import ReactDOM from 'react-dom'
+
+function Popup(props){
+  return(
+  ReactDOM.createPortal(
+    <>
+     
+    <h2>This is popup section</h2>
+    <p>{props.data}</p>
+    </>,document.body
+  )
+  )
+}
+
+function App(){
+  return(
+
+    <Popup data="raghav"/>
+
+  )
+}
+export default App;
