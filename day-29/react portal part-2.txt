@@ -1,0 +1,36 @@
+import { useState } from "react";
+import './app.css'
+
+function Model(props){
+  return(
+    <>
+      <div className="model-overlay">
+        <div className="content">
+          <h1>Model Heading</h1>
+          <p>this is model content , click close to close the model</p>
+
+          <button onClick={props.close}>close</button>
+        </div>
+      </div>
+    </>
+  )
+}
+
+function App(){
+
+  const [show, setshow] = useState(false)
+ 
+  function togglebutton(){
+    setshow(!show)
+  }
+
+  return(
+    <>
+      <button onClick={togglebutton}>Open Model</button>
+
+      {show && <Model close={togglebutton} />}
+    </>
+  )
+}
+
+export default App;
