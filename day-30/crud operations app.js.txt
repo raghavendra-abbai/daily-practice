@@ -1,0 +1,73 @@
+import { useEffect, useState } from "react";
+import Table from "./table";
+import Form from "./form";
+
+import {
+  getProducts,
+  addProductApi,
+  deleteProductApi,
+  updateProductApi
+} from "./Api";
+
+function App(){
+
+  const [products, setProducts] = useState([]);
+  const [editItem, setEditItem] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    let res = await getProducts();
+    setProducts(res.data.products);
+  };
+
+  const addProduct = async (product) => {
+    let res = await addProductApi(product);
+
+    setProducts((prev) => [...prev, res.data]);
+  };
+
+  const deleteProduct = async (id) => {
+    await deleteProductApi(id);
+
+    setProducts((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const editProduct = (item) => {
+    setEditItem(item);
+  };
+
+  const updateProduct = async (updatedItem) => {
+    let res = await updateProductApi(updatedItem.id, updatedItem);
+
+    setProducts((prev) =>
+      prev.map((item) =>
+        item.id === updatedItem.id ? res.data : item
+      )
+    );
+
+    setEditItem(null);
+  };
+
+  return(
+    <div style={{ padding: "20px" }}>
+      <h1>CRUD Application</h1>
+
+      <Form 
+        addProduct={addProduct}
+        editItem={editItem}
+        updateProduct={updateProduct}
+      />
+
+      <Table 
+        data={products}
+        deleteProduct={deleteProduct}
+        editProduct={editProduct}
+      />
+    </div>
+  );
+}
+
+export default App;
