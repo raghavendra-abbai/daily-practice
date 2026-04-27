@@ -1,0 +1,45 @@
+function Table({ data, deleteProduct, editProduct }) {
+  return (
+    <>
+      <h2>Product List</h2>
+
+      <table border="1" cellPadding="10">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {data.length > 0 ? (
+            data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.price}</td>
+                <td>
+                  <button onClick={() => editProduct(item)}>
+                    Edit
+                  </button>
+
+                  <button onClick={() => deleteProduct(item.id)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="4">No Data</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+export default Table;
