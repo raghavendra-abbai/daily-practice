@@ -1,0 +1,65 @@
+import { useEffect, useState } from "react";
+
+function Form({ addProduct, editItem, updateProduct }) {
+
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
+
+  useEffect(() => {
+    if (editItem) {
+      setTitle(editItem.title || "");
+      setPrice(editItem.price || "");
+    }
+  }, [editItem]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!title || !price) {
+      alert("Fill all fields");
+      return;
+    }
+
+    const product = {
+      title,
+      price: Number(price)
+    };
+
+    if (editItem) {
+      updateProduct({ ...product, id: editItem.id });
+    } else {
+      addProduct(product);
+    }
+
+    setTitle("");
+    setPrice("");
+  };
+
+  return (
+    <>
+      <h2>{editItem ? "Edit Product" : "Add Product"}</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+
+        <input
+          type="number"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+
+        <button type="submit">
+          {editItem ? "Update" : "Add"}
+        </button>
+      </form>
+    </>
+  );
+}
+
+export default Form;
