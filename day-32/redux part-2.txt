@@ -1,0 +1,53 @@
+import { createStore } from "redux";
+
+const initialState = {
+  name: "",
+  balance: 0,
+  mobile: "",
+  email: "",
+  password: ""
+};
+
+function Reducer(state = initialState, action) {
+  switch (action.type) {
+    case "deposit":
+      return { ...state, balance: state.balance + action.payload };
+
+    case "withdraw":
+      return { ...state, balance: state.balance - action.payload };
+
+    case "update":
+      return {
+        ...state,
+        name: action.payload.name,
+        mobile: action.payload.mobile,
+        email: action.payload.email,
+        password: action.payload.password
+      };
+
+    default:
+      return state;
+  }
+}
+
+const store = createStore(Reducer);
+
+console.log("Initial:", store.getState());
+
+store.dispatch({ type: "deposit", payload: 1500 });
+console.log("After deposit:", store.getState());
+
+store.dispatch({ type: "withdraw", payload: 500 });
+console.log("After withdraw:", store.getState());
+
+store.dispatch({
+  type: "update",
+  payload: {
+    name: "raghu",
+    mobile: "0987654321",
+    email: "raghu@example.com",
+    password: "raghu123"
+  }
+});
+
+console.log("After update:", store.getState());
