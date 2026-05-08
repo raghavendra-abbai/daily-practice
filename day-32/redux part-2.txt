@@ -1,5 +1,3 @@
-# reduc in react 
-
 import { createStore } from "redux";
 
 const initialState = {
