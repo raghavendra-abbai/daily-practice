@@ -1,0 +1,153 @@
+
+       import { useDispatch } from "react-redux";
+import { useState } from "react";
+
+function Forms() {
+
+  const dispatch = useDispatch();
+
+  const [amount, setAmount] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  return (
+
+    <div className="container mt-5">
+
+      <h2 className="text-center mb-4">Bank Form</h2>
+
+      {/* Amount Input */}
+
+      <div className="row mb-3">
+
+        <div className="col-6">
+
+          <input
+            type="number"
+            className="form-control"
+            placeholder="Enter Amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+
+        </div>
+
+        <div className="col-2">
+
+          <button
+            className="btn btn-primary w-100"
+            onClick={() => {
+
+              dispatch({
+                type: "deposit",
+                payload: Number(amount)
+              });
+
+              setAmount("");
+            }}
+          >
+            Deposit
+          </button>
+
+        </div>
+
+        <div className="col-2">
+
+          <button
+            className="btn btn-danger w-100"
+            onClick={() => {
+
+              dispatch({
+                type: "withdraw",
+                payload: Number(amount)
+              });
+
+              setAmount("");
+            }}
+          >
+            Withdraw
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* Name Update */}
+
+      <div className="row mb-3">
+
+        <div className="col-6">
+
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+        </div>
+
+        <div className="col-2">
+
+          <button
+            className="btn btn-success w-100"
+            onClick={() => {
+
+              dispatch({
+                type: "updateName",
+                payload: name
+              });
+
+              setName("");
+            }}
+          >
+            Update Name
+          </button>
+
+        </div>
+
+      </div>
+
+      {/* Mobile Update */}
+
+      <div className="row">
+
+        <div className="col-6">
+
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter Mobile"
+            value={mobile}
+            onChange={(e) => setMobile(e.target.value)}
+          />
+
+        </div>
+
+        <div className="col-2">
+
+          <button
+            className="btn btn-warning w-100"
+            onClick={() => {
+
+              dispatch({
+                type: "updateMobile",
+                payload: mobile
+              });
+
+              setMobile("");
+            }}
+          >
+            Update Mobile
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+
+export default Forms;
