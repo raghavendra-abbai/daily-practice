@@ -16,8 +16,6 @@ function Forms() {
 
       <h2 className="text-center mb-4">Bank Form</h2>
 
-      {/* Amount Input */}
-
       <div className="row mb-3">
 
         <div className="col-6">
@@ -72,8 +70,6 @@ function Forms() {
 
       </div>
 
-      {/* Name Update */}
-
       <div className="row mb-3">
 
         <div className="col-6">
@@ -108,8 +104,6 @@ function Forms() {
         </div>
 
       </div>
-
-      {/* Mobile Update */}
 
       <div className="row">
 

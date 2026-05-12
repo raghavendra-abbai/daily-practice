@@ -10,7 +10,6 @@ function reducer(state = initialState, action) {
 
   switch (action.type) {
 
-    // Deposit
     case "deposit":
 
       return {
@@ -18,7 +17,6 @@ function reducer(state = initialState, action) {
         balance: state.balance + action.payload
       };
 
-    // Withdraw
     case "withdraw":
 
       return {
@@ -26,7 +24,6 @@ function reducer(state = initialState, action) {
         balance: state.balance - action.payload
       };
 
-    // Update Name
     case "updateName":
 
       return {
@@ -34,7 +31,6 @@ function reducer(state = initialState, action) {
         name: action.payload
       };
 
-    // Update Mobile
     case "updateMobile":
 
       return {
