@@ -1,0 +1,14 @@
+import React from "react";
+import Forms from "./form";
+import Accounts from "./accounts";
+
+function App() {
+  return (
+    <>
+      <Forms />
+      <Accounts />
+    </>
+  );
+}
+
+export default App;

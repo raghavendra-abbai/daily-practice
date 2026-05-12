@@ -1,0 +1,35 @@
+import { useSelector } from "react-redux";
+
+function Accounts() {
+       const data = useSelector((state) => {
+        return state;
+       });
+  return (
+    <>
+    <div className="container">
+
+        <h2>Account Details</h2>
+        <table className="table table-bordered w-50" >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Balance</th>
+              <th>Mobile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{data.name}</td>
+              <td>{data.balance}</td>
+              <td>{data.mobile}</td>
+            </tr>
+          </tbody>
+        </table>
+      
+    </div>
+    
+    </>
+  );
+}
+
+export default Accounts;
