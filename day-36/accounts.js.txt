@@ -1,0 +1,88 @@
+import { useSelector } from "react-redux";
+
+function Accounts() {
+
+  const data = useSelector((state) => {
+    return state;
+  });
+
+  console.log(data);
+
+  return (
+    <>
+
+      <div className="container mt-5">
+
+        <h2 className="mb-3">Account Details</h2>
+
+        <table className="table table-bordered w-50">
+
+          <tbody>
+
+            <tr>
+              <th>Name</th>
+              <td>{data.account.name}</td>
+            </tr>
+
+            <tr>
+              <th>Balance</th>
+              <td>{data.account.balance}</td>
+            </tr>
+
+            <tr>
+              <th>Mobile</th>
+              <td>{data.account.mobile}</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+        <h2 className="text-primary mt-5">
+          Transaction Details
+        </h2>
+
+        <table className="table table-bordered">
+
+          <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Date</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            {data.transactions.map((item) => (
+
+              <tr key={item.id}>
+
+                <td>{item.id}</td>
+
+                <td>{item.amount}</td>
+
+                <td>{item.type}</td>
+
+                <td>
+                  {new Date(item.date).toLocaleString()}
+                </td>
+
+              </tr>
+
+            ))}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </>
+  );
+}
+
+export default Accounts;
