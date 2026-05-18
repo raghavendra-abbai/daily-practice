@@ -1,0 +1,65 @@
+
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { addtodo } from "./action";
+
+import TodoList from "./todolist";
+
+function App() {
+
+  const dispatch = useDispatch();
+
+  const [todotitle, setTodoTitle] = useState("");
+
+  const handletodo = () => {
+
+    if (todotitle.trim()) {
+
+      dispatch(
+        addtodo({
+          title: todotitle,
+        })
+      );
+
+      setTodoTitle("");
+    }
+  };
+
+  return (
+    <>
+      <div className="container mt-5">
+
+        <h1 className="text-center text-primary">
+          Todo App Using Redux
+        </h1>
+
+        <div className="input-group mt-4">
+
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Enter todo..."
+            value={todotitle}
+            onChange={(e) =>
+              setTodoTitle(e.target.value)
+            }
+          />
+
+          <button
+            className="btn btn-primary"
+            onClick={handletodo}
+          >
+            Add
+          </button>
+
+        </div>
+
+        <TodoList />
+
+      </div>
+    </>
+  );
+}
+
+export default App;

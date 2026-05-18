@@ -1,0 +1,65 @@
+import { legacy_createStore as createStore, combineReducers } from "redux";
+
+const initialState = {
+  name: "Raghav",
+  balance: 0,
+  mobile: "9876543210"
+};
+
+function accountReducer(state = initialState, action) {
+  switch (action.type) {
+    case "deposit":
+      return {
+        ...state,
+        balance: state.balance + action.payload
+      };
+
+    case "withdraw":
+      return {
+        ...state,
+        balance: state.balance - action.payload
+      };
+
+    case "updateName":
+      return {
+        ...state,
+        name: action.payload
+      };
+
+    case "updateMobile":
+      return {
+        ...state,
+        mobile: action.payload
+      };
+
+    default:
+      return state;
+  }
+}
+
+function transactionReducer(state = [], action) {
+  switch (action.type) {
+    case "Add":
+      return [
+        ...state,
+        {
+          id:action.payload.id,
+          amount: action.payload.amount,
+          type: action.payload.type,
+          date: new Date()
+        }
+      ];
+
+    default:
+      return state;
+  }
+}
+
+const rootReducer = combineReducers({
+  account: accountReducer,
+  transactions: transactionReducer
+});
+
+const store = createStore(rootReducer);
+
+export default store;
