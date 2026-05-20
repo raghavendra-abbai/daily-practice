@@ -1,0 +1,54 @@
+import React from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+
+import { deletetodo } from "./action";
+
+function TodoList() {
+
+  const todos = useSelector(
+    (state) => state.todos
+  );
+
+  const dispatch = useDispatch();
+
+  return (
+    <>
+      <div className="mt-4">
+
+        <h3 className="text-success">
+          Todo List
+        </h3>
+
+        {
+          todos.length === 0 ? (
+            <p>No Todos Added</p>
+          ) : (
+            todos.map((todo) => (
+              <div
+                key={todo.id}
+                className="card p-3 mt-2 d-flex flex-row justify-content-between align-items-center"
+              >
+
+                <span>{todo.title}</span>
+
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() =>
+                    dispatch(deletetodo(todo.id))
+                  }
+                >
+                  Delete
+                </button>
+
+              </div>
+            ))
+          )
+        }
+
+      </div>
+    </>
+  );
+}
+
+export default TodoList;
