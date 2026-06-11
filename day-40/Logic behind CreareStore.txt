@@ -1,0 +1,13 @@
+
+const userSlice = createSlice({
+  name: "user",
+  initialState: data
+  reducers: {
+    updateModel: (state, action) => {
+      state.mobile = action.payload;
+    }
+  }
+}
+);
+
+export const { updateModel } = userSlice.actions;
