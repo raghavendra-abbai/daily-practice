@@ -8,6 +8,7 @@ const userSlice = createSlice({
     }
   }
 }
+
 );
 
 export const { updateModel } = userSlice.actions;
