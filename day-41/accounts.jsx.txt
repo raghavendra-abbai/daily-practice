@@ -1,0 +1,26 @@
+ import {useSelector} from "react-redux";
+ 
+ export default function Account() {
+
+  let data = useSelector((state) => {
+    console.log(state);
+    return state.user;
+  });
+  return (
+    <div className="container mt-5">
+      <h1 className="text-primary">Account</h1>
+      <table className="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Name:</td>
+            <td>{data.name}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{data.email}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
