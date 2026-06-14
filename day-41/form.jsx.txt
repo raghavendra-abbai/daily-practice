@@ -64,7 +64,7 @@ export default function Form() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
+         </div>
 
         <div className="mb-3">
           <label>Amount</label>
