@@ -1,0 +1,57 @@
+
+import { createSlice, configureStore } from "@reduxjs/toolkit";
+
+const initialState = {
+  balance: 0,
+  name: "",
+  mobile: null,
+};
+
+const transactions = [];
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: initialState,
+  reducers: {
+    updatemobile: (state, action) => {
+      state.mobile = action.payload;
+    },
+    updatename: (state, action) => {
+      state.name = action.payload;
+    },
+    deposit: (state, action) => {
+      state.balance += action.payload;
+    },
+    withdraw: (state, action) => {
+      state.balance -= action.payload;
+    },
+  },
+});
+
+const transactionSlice = createSlice({
+  name: "transaction",
+  initialState: transactions,
+  reducers: {
+    addTransaction: (state, action) => {
+      state.push(action.payload);
+    },
+  },
+});
+
+const store = configureStore({
+  reducer: {
+    counter: counterSlice.reducer,
+    transaction: transactionSlice.reducer,
+  },
+});
+
+export default store;
+
+export const {
+  updatemobile,
+  updatename,
+  deposit,
+  withdraw,
+} = counterSlice.actions;
+
+export const { addTransaction } = transactionSlice.actions;

@@ -1,0 +1,44 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+const initialState = {
+  name: "",
+  email: "",
+  mobile: "",
+  balance: 0
+};
+
+const userSlice = createSlice({
+  name: "user",
+  initialState,
+  reducers: {
+    updateName: (state, action) => {
+      state.name = action.payload;
+    },
+
+    updateEmail: (state, action) => {
+      state.email = action.payload;
+    },
+
+    updateMobile: (state, action) => {
+      state.mobile = action.payload;
+    },
+
+    deposit: (state, action) => {
+      state.balance += action.payload;
+    },
+
+    withdraw: (state, action) => {
+      state.balance -= action.payload;
+    }
+  }
+});
+
+export const {
+  updateName,
+  updateEmail,
+  updateMobile,
+  deposit,
+  withdraw
+} = userSlice.actions;
+
+export default userSlice.reducer;
