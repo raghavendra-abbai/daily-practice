@@ -65,7 +65,7 @@ React JS Completed
 - Supabase
 - Cloudflare
 - Startup Development (Samparka)
-
+  
 ## Author
 
 Raghavendra S
