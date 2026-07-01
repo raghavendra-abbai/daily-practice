@@ -62,9 +62,7 @@ React JS Completed
  Currently Exploring:
 - Advanced React Patterns
 - Full Stack Development
-- Supabase
-- Cloudflare
-- Startup Development (Samparka)
+
   
 ## Author
 
