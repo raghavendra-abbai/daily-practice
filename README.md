@@ -50,7 +50,7 @@ This repository includes:
 - Routing Examples
 - Hooks Practice
 - Learning Exercises
-
+  
  Goal
 
 The purpose of this repository is to document my React JS learning process, strengthen my frontend development skills, and build a strong foundation for creating scalable web applications.
